@@ -1,5 +1,5 @@
-##Read Data
-##=========
+## Read Data
+##==========
 
 # Get column names from header row
 names <- scan("household_power_consumption.txt", what="text", sep=";", quiet=T, nlines=1)
