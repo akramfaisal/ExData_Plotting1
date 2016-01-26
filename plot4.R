@@ -1,12 +1,13 @@
 ## Read Data
 ##==========
 
+# Set read file
+file <- unz("exdata-data-household_power_consumption.zip", "household_power_consumption.txt")
 # Get column names from header row
-names <- scan("household_power_consumption.txt", what="text", sep=";", quiet=T, nlines=1)
+names <- scan(file, what="text", sep=";", quiet=T, nlines=1)
 # Read - only the required lines
-data <- read.table("household_power_consumption.txt", header=F, sep=";", na.strings="?",
-                   skip=66637, nrows=2880, col.names=names,
-                   colClasses=c("character", "character",rep("numeric", 7)))
+data <-read.table(file, header=F, sep=";", na.strings="?", skip=66637, nrows=2880,
+                  col.names=names, colClasses=c("character", "character",rep("numeric", 7)))
 # Combine Date & Time to same column
 data$Date <- paste(data$Date, data$Time, sep=" ")
 data$Time <- NULL
